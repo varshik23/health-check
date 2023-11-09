@@ -4,7 +4,7 @@ import sys
 class Parse:
     def __init__(self):
         self.urls = []
-    
+
     def parse_yaml(self, path):
         try:
             with open(path, 'r') as f:

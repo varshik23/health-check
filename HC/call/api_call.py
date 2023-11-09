@@ -1,4 +1,5 @@
 import requests
+import sys
 
 class ApiCall:
     def __init__(self):
@@ -16,7 +17,7 @@ class ApiCall:
                 response = requests.delete(url)
             else:
                 print("Method not supported")
-                exit(1)
+                sys.exit(1)
             status = "UP"
             if not response.ok or response.elapsed.total_seconds() * 1000 > 500:
                 status = "Down"

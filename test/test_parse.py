@@ -10,7 +10,7 @@ def test_parse():
     """
     parse = Parse()
     urls = parse.parse_yaml('test/mock_data/test_1.yaml')
-    assert urls == [('https://www.google.com/', 'GET'), ('https://www.yahoo.com/', 'GET')]
+    assert urls == [('https://www.google.com/', 'GET', None), ('https://www.yahoo.com/', 'GET', None)]
 
 def test_parse_empty_method():
     """
@@ -18,8 +18,9 @@ def test_parse_empty_method():
     """
     parse = Parse()
     urls = parse.parse_yaml('test/mock_data/test_2.yaml')
-    assert urls == [('https://fetch.com/', 'POST'), ("https://fetch.com/careers", "PUT"),
-                    ("https://fetch.com/rewards", "GET")]
+    body = '{"foo": "bar"}'
+    assert urls == [('https://fetch.com/', 'POST', body), ("https://fetch.com/careers", "PUT", body),
+                    ("https://fetch.com/rewards", "GET", None)]
 
 def test_invalid_path():
     """
